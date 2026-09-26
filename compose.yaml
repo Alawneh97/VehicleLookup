@@ -1,0 +1,8 @@
+services:
+  vehiclelookup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: vehiclelookup:local
+    ports:
+      - "8080:8080"

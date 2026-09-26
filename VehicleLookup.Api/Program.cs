@@ -1,9 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 builder.Services.AddHttpClient<VehicleLookup.Api.Services.NhtsaClient>(client =>
@@ -14,19 +11,24 @@ builder.Services.AddHttpClient<VehicleLookup.Api.Services.NhtsaClient>(client =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 
-if (!app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment() && app.Configuration.GetValue("HttpsRedirection:Enabled", true))
 {
     app.UseHttpsRedirection();
 }
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGet("/healthz", () => Results.Ok(new { status = "ok" }));
+app.MapFallback("/api/{**path}", () => Results.NotFound());
+app.MapFallbackToFile("index.html");
 
 app.Run();

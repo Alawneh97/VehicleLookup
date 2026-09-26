@@ -1,59 +1,31 @@
-# VehicleLookupClient
+# VehicleLookup frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.8.
+Angular interface for selecting a make, model year, and optional vehicle type.
 
-## Development server
+## Development
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Run the API first, then run these commands from this folder:
 
 ```bash
-ng generate component component-name
+npm ci
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Open http://localhost:4200. API requests use the target in `proxy.conf.json`:
+
+- IIS Express: `http://localhost:63787`
+- Backend HTTP launch profile: `http://localhost:5035`
+
+Restart the development server after changing the proxy target.
+
+## Build and test
 
 ```bash
-ng generate --help
+npm run build
+npm test -- --watch=false
 ```
 
-## Building
+The production output is in `dist/vehicle-lookup-client/browser`.
+Tests cover validation, API parameters, request cancellation, error handling, and make selection.
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+See the [project README](../README.md) for Docker and backend setup.
