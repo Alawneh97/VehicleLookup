@@ -1,0 +1,47 @@
+:host { display: block; }
+.topbar { background: #102c45; color: white; padding: 22px max(24px, calc((100vw - 1120px) / 2)); display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+.brand { font-size: 1.2rem; font-weight: 700; }
+.topbar span { color: #c2d5e5; font-size: .875rem; }
+main { max-width: 1120px; margin: 0 auto; padding: 40px 24px; }
+h1 { margin: 0 0 10px; font-size: clamp(1.8rem, 4vw, 2.3rem); letter-spacing: -.035em; }
+.intro { margin-bottom: 30px; }
+.intro p, small, .form-footer span, footer { color: #526478; }
+h2 { margin: 0 0 24px; font-size: 1.15rem; }
+.panel { background: white; border: 1px solid #d8e1ea; border-radius: 12px; padding: 28px; margin-bottom: 24px; }
+.fields { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr; gap: 24px; align-items: start; }
+.field { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+label { font-size: .9rem; font-weight: 600; }
+input, select { width: 100%; min-width: 0; min-height: 46px; padding: 10px 12px; border: 1px solid #97a8ba; border-radius: 6px; background: white; color: #162c41; font: inherit; }
+input:disabled, select:disabled { background: #edf1f5; color: #526478; }
+small { font-size: .875rem; line-height: 1.5; }
+.optional { font-weight: 400; color: #526478; }
+button { cursor: pointer; font: inherit; border-radius: 6px; padding: 8px 12px; border: 1px solid currentColor; background: white; color: #164f77; }
+button:disabled { opacity: .6; cursor: default; }
+.primary { background: #125a83; color: white; border-color: #125a83; padding: 12px 24px; font-weight: 600; }
+.primary:hover:not(:disabled) { background: #0c4263; }
+.form-footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 28px; padding-top: 22px; border-top: 1px solid #e0e7ee; }
+.form-footer span { font-size: .875rem; }
+.error { padding: 12px; background: #fff0f0; color: #9c2525; border-radius: 6px; margin: 12px 0; overflow-wrap: anywhere; }
+.error button { margin-top: 8px; }
+.results-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.results-heading h2 { margin: 0; }
+.count { padding: 5px 10px; background: #eaf3f9; border-radius: 20px; color: #164f77; font-size: .875rem; }
+.empty { padding: 30px 0; color: #526478; text-align: center; }
+.summary { color: #526478; }
+.model-grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.model-grid li { border: 1px solid #dce5ed; border-left: 3px solid #167da1; padding: 16px; border-radius: 4px; font-weight: 600; overflow-wrap: anywhere; }
+footer { font-size: .875rem; }
+a { color: #125a83; }
+:focus-visible { outline: 3px solid #1689c6; outline-offset: 3px; }
+@media (max-width: 760px) { .fields { grid-template-columns: 1fr; } .model-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .panel { padding: 20px; } main { padding: 28px 16px; } }
+@media (max-width: 420px) { .topbar { align-items: flex-start; flex-direction: column; } .model-grid { grid-template-columns: 1fr; } .form-footer { align-items: stretch; flex-direction: column; } }
+
+.make-combobox { position: relative; }
+.make-combobox input { padding-right: 36px; }
+.dropdown-chevron { position: absolute; right: 14px; top: 10px; pointer-events: none; }
+.make-options { position: absolute; z-index: 10; top: 100%; left: 0; right: 0; max-height: 260px; overflow-y: auto; margin: 4px 0 0; padding: 4px 0; list-style: none; background: white; border: 1px solid #97a8ba; border-radius: 6px; box-shadow: 0 6px 18px #102c4520; }
+.make-options:empty { display: none; }
+.make-options li { padding: 10px 12px; cursor: pointer; overflow-wrap: anywhere; }
+.make-options li:hover, .make-options li.active { background: #eaf3f9; }
+.make-options li[aria-selected=true] { font-weight: 700; color: #125a83; }
+.make-no-results { position: absolute; z-index: 10; top: 100%; left: 0; right: 0; margin-top: 4px; padding: 12px; background: white; border: 1px solid #97a8ba; border-radius: 6px; color: #526478; }
